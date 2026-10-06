@@ -118,75 +118,155 @@
                 animation: pulse 1s ease infinite alternate;
             }
 
+            /* ===== Форма ответа ===== */
+            #form {
+                display: block;
+                width: 100%;
+                max-width: 380px;
+                margin: 0 auto;
+                padding: 0 24px;
+                box-sizing: border-box;
+                text-align: left;
+            }
+
             .form-inner {
                 position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
             }
 
-            .form-inner label {
-                display: block;
-                padding-left: 15px;
-                font-family: var(--font);
-                color: rgba(255, 255, 255, 0.6);
-                text-transform: uppercase;
-                font-size: 15px;
-                padding: 0 15px;
-                margin: 10px 0 15px;
+            .radio-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                margin: 0 0 6px;
             }
 
-            .btn {
-                padding: 10px 20px;
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-
-                transition: transform 0.3s ease;
+            .radio-option {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                padding: 13px 18px;
+                background: rgba(255, 250, 242, 0.65);
+                border: 1px solid rgba(98, 30, 7, 0.25);
+                border-radius: 14px;
+                cursor: pointer;
+                transition:
+                    background-color 0.2s ease,
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease;
             }
-
-            /* Стили для кнопки с эффектом при нажатии */
-            .btn {
-                transform: scale(1.1); /* Увеличиваем кнопку при активации */
+            .radio-option:hover {
+                border-color: rgba(98, 30, 7, 0.55);
+            }
+            .radio-option:has(input:checked) {
+                background: #fffaf2;
+                border-color: #621e07;
+                box-shadow: 0 0 0 1px #621e07;
+            }
+            .radio-option:has(input:focus-visible) {
+                outline: 2px solid #c9a46a;
+                outline-offset: 2px;
+            }
+            .radio-option input[type="radio"] {
+                flex: none;
+                width: 20px;
+                height: 20px;
+                margin: 0;
+                accent-color: #621e07;
+                cursor: pointer;
+            }
+            .radio-option label {
+                flex: 1;
+                margin: 0;
+                padding: 0;
+                font-size: 18px;
+                line-height: 1.3;
+                color: #3b2a22;
+                text-transform: none;
+                letter-spacing: 0.01em;
+                cursor: pointer;
             }
 
             .form-inner textarea {
-                width: 80%;
-                text-align: center;
-                margin-top: 5px;
-
-                border-radius: 10px;
-                margin-bottom: 5px;
-                font-size: 16px;
-                font-weight: 400;
-                background-color: #fffef8;
-                border-color: #1d3f57 0.5px;
-                letter-spacing: 0.11em;
-                height: 30px;
-                font-family: var(--font);
+                display: block;
+                width: 100%;
+                height: 52px;
+                padding: 13px 18px;
+                margin: 0;
+                box-sizing: border-box;
+                resize: none;
+                font-size: 18px;
+                line-height: 1.3;
+                color: #3b2a22;
+                background-color: #fffaf2;
+                border: 1px solid rgba(98, 30, 7, 0.35);
+                border-radius: 14px;
+                letter-spacing: 0.01em;
+            }
+            .form-inner textarea::placeholder {
+                color: rgba(59, 42, 34, 0.5);
+            }
+            .form-inner textarea:focus {
+                outline: none;
+                border-color: #621e07;
+                box-shadow: 0 0 0 1px #621e07;
             }
 
             .form-inner input[type="submit"] {
-                background: linear-gradient(to top left, #621e07 0%, #621e07 100%);
-                width: 80%;
-                height: 30px;
-                text-align: center;
-                border: 0;
-                border-bottom: 2px #aaa;
-                border-radius: 10px;
-                font-size: 16px;
-                font-weight: 400;
-                background-color: #fffaf8;
-                letter-spacing: 0.11em;
-                font-family: var(--font);
-                padding: 0 15px;
-                margin: 10px 0 15px;
+                display: block;
+                width: 100%;
+                height: 52px;
+                margin: 4px 0 0;
+                padding: 0 20px;
+                font-size: 18px;
+                font-weight: 500;
+                letter-spacing: 0.06em;
+                color: #f7ecdf;
+                background: linear-gradient(160deg, #7d2a0d 0%, #621e07 55%, #4a1505 100%);
+                border: 1px solid #c9a46a;
+                border-radius: 14px;
+                box-shadow: 0 8px 20px rgba(98, 30, 7, 0.3);
+                cursor: pointer;
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease,
+                    opacity 0.2s ease;
             }
-            .radio-group {
-                text-align: left;
-                width: 80%;
-                font-size: 20px;
-                margin-top: 7px;
-                margin-bottom: 7px;
-                color: #585856;
-                color: rgba(88, 88, 86, 0.7);
+            .form-inner input[type="submit"]:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 12px 24px rgba(98, 30, 7, 0.4);
+            }
+            .form-inner input[type="submit"]:active {
+                transform: scale(0.98);
+            }
+            .form-inner input[type="submit"]:focus-visible {
+                outline: 2px solid #c9a46a;
+                outline-offset: 3px;
+            }
+            .form-inner input[type="submit"]:disabled {
+                opacity: 0.6;
+                cursor: default;
+                transform: none;
+            }
+
+            .form-status {
+                min-height: 26px;
+                margin: 2px 0 0;
+                text-align: center;
+                font-size: 18px;
+                color: #621e07;
+                opacity: 0;
+                transform: translateY(6px);
+                transition:
+                    opacity 0.3s ease,
+                    transform 0.3s ease;
+            }
+            .form-status.show {
+                opacity: 1;
+                transform: none;
             }
 
             body {
@@ -332,13 +412,19 @@
         <center style="margin-top: 0px">
             <form class="transparent" method="post" id="form">
                 <div class="form-inner">
-                    <div class="radio-group" required>
-                        <input type="radio" id="question1_yes" name="name" value="Иә барамын" required />
-                        <label for="question1_yes">Иә барамын</label><br />
-                        <input type="radio" id="question1_no" name="name" value="Бара алмаймын" required />
-                        <label for="question1_no">Бара алмаймын</label><br />
-                        <input type="radio" id="question1_maybe" name="name" value="Әзірге белгісіз" required />
-                        <label for="question1_maybe">Әзірге белгісіз</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="question1_yes" name="name" value="Иә барамын" required />
+                            <label for="question1_yes">Иә барамын</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="question1_no" name="name" value="Бара алмаймын" required />
+                            <label for="question1_no">Бара алмаймын</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="question1_maybe" name="name" value="Әзірге белгісіз" required />
+                            <label for="question1_maybe">Әзірге белгісіз</label>
+                        </div>
                     </div>
                     <textarea
                         required
@@ -346,10 +432,11 @@
                         maxlength="100"
                         id="message"
                         cols="30"
-                        rows="4"
+                        rows="1"
                         placeholder="Есіміңізді жазыңыз"
                     ></textarea>
-                    <input type="submit" value="Жіберу" style="color: white" class="btn" />
+                    <input type="submit" value="Жіберу" />
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                 </div>
             </form>
         </center>
@@ -439,65 +526,55 @@
         <script>
             // Сюда вставьте ссылку веб-приложения Apps Script (заканчивается на /exec)
             const URL_APP =
-                "https://script.google.com/macros/s/AKfycbxYY3ueUztvW7w4xO8xuAhmFxSOvtPUW3CQLUmzP7YurD5jKOPSjN1hYPPCofkdE1HhUA/exec";
+                "https://script.google.com/macros/s/AKfycbyalybDsToBE0v6FBmHIaySxfJe1Ghsa3lPO_7BVZTsyVD0ZRNAfHdrBgVvvuBllIPyhA/exec";
 
             const form = document.querySelector("#form");
-            const submitButton = form.querySelector('input[type="submit"]');
+            const statusEl = document.querySelector("#formStatus");
+            let statusTimer;
 
             form.action = URL_APP;
 
-            function isFilled(details) {
-                const { name, message } = details;
-                if (!name || !message) return false;
-                return true;
+            // Мгновенный ответ гостю
+            function showThanks() {
+                statusEl.textContent = "Жауабыңызға рахмет!";
+                statusEl.classList.add("show");
+                clearTimeout(statusTimer);
+                statusTimer = setTimeout(() => statusEl.classList.remove("show"), 5000);
             }
 
-            form.addEventListener("submit", async ev => {
+            // Отправка в таблицу в фоне (гость её не ждёт), до 3 попыток при сбое сети
+            function sendInBackground(body, attempt = 1) {
+                fetch(URL_APP, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+                    mode: "no-cors",
+                    body: body,
+                    keepalive: true, // запрос дойдёт, даже если гость закроет страницу
+                }).catch(err => {
+                    console.error("Error:", err);
+                    if (attempt < 3) {
+                        setTimeout(() => sendInBackground(body, attempt + 1), 2000 * attempt);
+                    }
+                });
+            }
+
+            form.addEventListener("submit", ev => {
                 ev.preventDefault();
 
-                const name = document.querySelector("[name=name]:checked");
-                const message = document.querySelector("[name=message]");
+                const checked = form.querySelector("[name=name]:checked");
+                const name = checked ? checked.value : "";
+                const message = form.querySelector("[name=message]").value.trim();
 
-                let details = {
-                    name: name ? name.value : "",
-                    message: message.value.trim(),
-                };
-
-                if (!isFilled(details)) {
+                if (!name || !message) {
                     alert("Жауабыңызды таңдап, есіміңізді жазыңыз");
                     return;
                 }
 
-                let formBody = [];
-                for (let property in details) {
-                    let encodedKey = encodeURIComponent(property);
-                    let encodedValue = encodeURIComponent(details[property]);
-                    formBody.push(encodedKey + "=" + encodedValue);
-                }
-                formBody = formBody.join("&");
+                const body = new URLSearchParams({ name, message }).toString();
 
-                submitButton.disabled = true;
-
-                // Деректерді серверге жіберу
-                fetch(URL_APP, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-                    },
-                    mode: "no-cors",
-                    body: formBody,
-                })
-                    .then(() => {
-                        form.reset();
-                        alert("Жауабыңызға рахмет!");
-                    })
-                    .catch(err => {
-                        console.error("Error:", err);
-                        alert("Ошибка!");
-                    })
-                    .finally(() => {
-                        submitButton.disabled = false; // Жіберу батырмасын қайта қосу
-                    });
+                form.reset();
+                showThanks();
+                sendInBackground(body);
             });
 
             function onEntry(entry) {
